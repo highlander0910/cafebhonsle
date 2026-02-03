@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cafe Bhonsle | Authentic Goan Taste Since 1920</title>
+
+  <!-- Google Fonts (stable, long-term safe) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* =====================
+       ROOT THEME VARIABLES
+    ====================== */
+    :root {
+      --bg: #faf7f2;
+      --card: #f3ede5;
+      --brown: #3e2f25;
+      --accent: #b5542f; /* terracotta */
+      --accent-soft: #e8c2b3;
+      --text: #3b3b3b;
+      --muted: #7a6f66;
+      --radius: 18px;
+      --shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: var(--radius);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* =====================
+       HEADER / NAV
+    ====================== */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(250,247,242,0.95);
+      backdrop-filter: blur(8px);
+      z-index: 10;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .btn {
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 500;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      box-shadow: 0 8px 20px rgba(181,84,47,0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: #9e4524;
+      box-shadow: 0 12px 30px rgba(181,84,47,0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 1.5px solid var(--accent-soft);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* =====================
+       HERO
+    ====================== */
+    .hero {
+      max-width: 1100px;
+      margin: auto;
+      padding: 4rem 1rem 3rem;
+      display: grid;
+      gap: 3rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 3.5rem);
+      color: var(--brown);
+      margin-bottom: 1rem;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 520px;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-img {
+      box-shadow: var(--shadow);
+      transform: rotate(-1deg);
+    }
+
+    /* =====================
+       SECTIONS
+    ====================== */
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 4rem 1rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--brown);
+    }
+
+    .divider {
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin: 0.8rem auto;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: auto;
+    }
+
+    /* =====================
+       FEATURE CARDS
+    ====================== */
+    .grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .card {
+      background: var(--card);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 0.5rem;
+      color: var(--brown);
+    }
+
+    .price {
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+
+    /* =====================
+       LOCATIONS
+    ====================== */
+    .locations {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .location {
+      background: var(--card);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+    }
+
+    /* =====================
+       FOOTER
+    ====================== */
+    footer {
+      background: #2f241c;
+      color: #d6c9be;
+      padding: 3rem 1rem;
+    }
+
+    footer h3 {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    footer p {
+      max-width: 400px;
+      font-size: 0.95rem;
+    }
+
+    footer small {
+      display: block;
+      margin-top: 2rem;
+      opacity: 0.6;
+    }
+
+    /* =====================
+       RESPONSIVE
+    ====================== */
+    @media (min-width: 900px) {
+      .hero {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">Cafe Bhonsle</div>
+    <a href="#locations" class="btn">Visit Us</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <span class="badge">SINCE 1920</span>
+      <h1>Authentic <span>Goan Taste</span></h1>
+      <p>
+        Experience the nostalgic charm of Old Goa with our legendary Pav Bhaji,
+        fluffy Goan buns, and steaming hot chai — a tradition served on a plate.
+      </p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn">View Full Menu</a>
+        <a href="#about" class="btn btn-outline">Our Heritage</a>
+      </div>
+    </div>
+
+    <img class="hero-img" src="https://images.unsplash.com/photo-1604909052743-94e838986d24?q=80&w=1200" alt="Goan buns and chai">
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-title">
+      <h2>A Legacy of Flavor</h2>
+      <div class="divider"></div>
+      <p>
+        For over 100 years, Cafe Bhonsle has been a part of Panjim’s daily life —
+        serving honest Goan vegetarian food across three generations.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>1920</h3>
+        <p>Established in Panjim as a humble Goan eatery.</p>
+      </div>
+      <div class="card">
+        <h3>3rd Generation</h3>
+        <p>Family-run, recipes unchanged, values intact.</p>
+      </div>
+      <div class="card">
+        <h3>1M+ Customers</h3>
+        <p>A beloved breakfast stop for locals and travelers alike.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu">
+    <div class="section-title">
+      <h2>Local Favorites</h2>
+      <div class="divider"></div>
+      <p>Simple food, deep flavors — just like Goa intended.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Goan Buns</h3>
+        <p>Sweet, fluffy fermented bread made the traditional way.</p>
+        <div class="price">₹60</div>
+      </div>
+      <div class="card">
+        <h3>Special Pav Bhaji</h3>
+        <p>Our signature mashed vegetable curry with buttered pav.</p>
+        <div class="price">₹180</div>
+      </div>
+      <div class="card">
+        <h3>Mushroom Xacuti</h3>
+        <p>Spicy Goan curry with roasted spices and coconut.</p>
+        <div class="price">₹220</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section id="locations">
+    <div class="section-title">
+      <h2>Find Us Across Goa</h2>
+      <div class="divider"></div>
+      <p>Same legendary taste, wherever you go.</p>
+    </div>
+
+    <div class="locations">
+      <div class="location">
+        <strong>Panjim</strong><br>
+        Near National Theatre, Panjim<br>
+        Mon–Sat: 7am – 9pm | Sun: 7am – 12pm
+      </div>
+      <div class="location">
+        <strong>Porvorim</strong><br>
+        CHOGM Road, Porvorim<br>
+        Daily: 7am – 9pm
+      </div>
+      <div class="location">
+        <strong>Ponda</strong><br>
+        Durgabhat, Ponda<br>
+        Daily: 7am – 9pm
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <h3>Cafe Bhonsle</h3>
+  <p>
+    Preserving the authentic taste of Goa since 1920.
+    Where tradition meets taste, and every meal tells a story.
+  </p>
+  <small>© 2026 Cafe Bhonsle. All rights reserved.</small>
+</footer>
+
+</body>
+</html>
